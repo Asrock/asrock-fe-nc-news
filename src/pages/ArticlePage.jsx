@@ -1,25 +1,26 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react"
-import axios from "axios"
+import { useParams, Link } from "react-router-dom";
+import { useState } from "react"
 import CommentCard from "../components/CommentCard";
+import { useUpdateEffect } from "../../utils/react-utils"
+import apiRequest from "../../utils/api-utils"
 
 const ArticlePage = () => {
     const [article, setArticle] = useState({});
     const [comments, setComments] = useState([]);
-    const { article_id = 1 } = useParams();
+    const { article_id } = useParams();
 
 
     //TODO - Change it
-    useEffect(() => {
+    useUpdateEffect(() => {
         Promise
             .all([
-                axios.get(`https://asrock-be-nc-news.onrender.com/api/articles/${article_id}`),
-                axios.get(`https://asrock-be-nc-news.onrender.com/api/articles/${article_id}/comments`)
+                apiRequest("get", `articles/${article_id}`),
+                apiRequest("get", `articles/${article_id}/comments`)
             ])
             .then(([{ data: { article } }, { data: { comments } }]) => {
-                console.log(article)
-                console.log(comments)
                 setArticle(article);
+                //TODO - This might be done in the BE
+                comments.sort((a, b) => b.created_at.localeCompare(a.created_at));
                 setComments(comments);
             });
     }, [])
@@ -28,7 +29,10 @@ const ArticlePage = () => {
         <div>
             <h2>{article.title}</h2>
             <h5>{new Date(article.created_at).toLocaleDateString()}</h5>
+            <img className="large" src={article.article_img_url} />
             <CommentCard comment={article} />
+            <Link className="tag" to={`/topics/${article.topic}/articles`}>{article.topic}</Link>
+            <h4>Comments</h4>
             <div className="comments-list">
                 {comments.map(comment => <CommentCard key={comment.comment_id} comment={comment} />)}
             </div>

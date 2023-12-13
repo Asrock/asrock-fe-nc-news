@@ -1,12 +1,15 @@
-import React from "react"
+import { Link } from "react-router-dom"
+import { relativeTimeFormatter } from "../../utils/formatter-utils";
 
-const CommentCard = ({ comment: { body, topic, created_at, author } }) => {
+const CommentCard = ({ comment: { body, created_at, author } }) => {
     return (
         <div className="comment-card">
             <p>{body}</p>
-            <p>{topic}</p>
-            <p>{created_at}</p>
-            <p>{author}</p>
+            <div className="inline">
+                <h5>Created by</h5>
+                <Link to={`/users/${author}`}><h5>{author}</h5></Link>
+                <h5>{relativeTimeFormatter(new Date(created_at))}</h5>
+            </div>
         </div>
     )
 };

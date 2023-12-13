@@ -10,6 +10,8 @@ export function relativeTimeFormatter(to, from = new Date()) {
     const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
 
     const elapsed = to - from;
+    if(!elapsed) return;
+    
     for(const unit in units)
         if (Math.abs(elapsed) > units[unit] || unit == 'second') 
             return rtf.format(Math.round(elapsed/units[unit]), unit)
