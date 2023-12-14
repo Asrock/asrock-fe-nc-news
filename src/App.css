@@ -117,3 +117,36 @@ header {
     width: 32px;
     height: 32px;
 }
+
+.voting {
+    border: 1px gray solid;
+    padding: 10px;
+    border-radius: 20px;
+    margin: auto;
+    text-align: center;
+}
+
+.comment {
+    color: black;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.round {
+    border-radius: 50%;
+}
+
+.btn-disabled {
+    border: none;
+    pointer-events: none;
+    background-color: rgb(229, 229, 229);
+}
+
+.btn-error {
+    border-color: red;
+}
+
+.btn-lock {
+    pointer-events: none;
+}
