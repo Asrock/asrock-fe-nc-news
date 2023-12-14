@@ -42,6 +42,8 @@
 
 .thumbnail {
     width: 100px;
+    height: 100px;
+    border-radius: 20px;
 }
 
 .user-list {
@@ -50,7 +52,14 @@
 }
 
 .user-card {
-    margin: auto;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    background-color: whitesmoke;
+    border-radius: 20px;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
 }
 
 .invalid-input {
@@ -85,4 +94,26 @@
 
 .center {
     text-align: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-sub-menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-user-menu {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: end;
+}
+
+.icon {
+    padding: 1.5em;
+    width: 32px;
+    height: 32px;
 }
