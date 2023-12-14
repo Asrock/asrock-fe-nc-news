@@ -1,3 +1,9 @@
+#root {
+    max-width: 1280px;
+    padding: 2rem;
+    margin: auto;
+}
+
 .articles-list {
     display: flex;
     flex-flow: column nowrap;
@@ -10,6 +16,21 @@
     background-color: whitesmoke;
     border-radius: 20px;
     padding: 15px;
+}
+
+.comments-list {
+    display: flex;
+    flex-flow: column nowrap;
+    row-gap: 10px;
+}
+
+.comment-card {
+    display: flex;
+    flex-flow: column wrap;
+    background-color: whitesmoke;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
 }
 
 .inline {
@@ -46,4 +67,22 @@
 
 .invalid-input:focus {
     outline-color: rgba(255, 0, 0, 0.529);
+}
+
+.large {
+    width: 90vw;
+    max-height: 500px;
+    object-fit: scale-down;
+}
+
+.tag {
+    border: 1px gray solid;
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.center {
+    text-align: center;
 }
