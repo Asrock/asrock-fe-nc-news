@@ -22,3 +22,28 @@
 .thumbnail {
     width: 100px;
 }
+
+.user-list {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.user-card {
+    margin: auto;
+}
+
+.invalid-input {
+    border-color: rgba(255, 0, 0, 0.529);
+}
+
+.valid-input {
+    border-color: rgba(21, 255, 0, 0.529);
+}
+
+.valid-input:focus {
+    outline-color: rgba(21, 255, 0, 0.529);
+}
+
+.invalid-input:focus {
+    outline-color: rgba(255, 0, 0, 0.529);
+}
