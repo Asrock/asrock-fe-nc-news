@@ -146,3 +146,7 @@ header {
 .vote-error {
     border-color: red;
 }
+
+.vote-loading {
+    pointer-events: none;
+}

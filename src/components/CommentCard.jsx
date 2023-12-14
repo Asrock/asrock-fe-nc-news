@@ -9,19 +9,27 @@ const CommentCard = ({ comment: { body, created_at, author, votes: currVotes, co
     const voteHandler = (num) => ({ target }) => {
         const oppositeBtn = [...target.parentElement.children].find(field => field.nodeName === "BUTTON" && field !== target);
 
-        [target, oppositeBtn].forEach((btn) => btn.classList.remove("vote-error"));
+        const lockBtns = (bool) => [target, oppositeBtn].forEach((btn) => {
+            btn.classList[bool ? "add" : "remove"]("vote-disable");
+            btn.classList.remove("vote-error");
+        });
+
+        lockBtns(true);
 
         const relativeUrlPath = comment_id == null ? `articles/${article_id}` : `comments/${comment_id}`;
         apiRequest("patch", relativeUrlPath, { inc_votes: num })
             .then(({ data }) => {
                 setVotes((data.article ?? data.comment)["votes"]);
 
-                if(oppositeBtn.classList.contains("vote-success"))
+                if (oppositeBtn.classList.contains("vote-success"))
                     [target, oppositeBtn].forEach((btn) => btn.classList.remove("vote-success"));
                 else
                     target.classList.add("vote-success");
+
+                lockBtns(false);
             })
             .catch(() => {
+                lockBtns(false);
                 target.classList.add("vote-error");
             });
     };
