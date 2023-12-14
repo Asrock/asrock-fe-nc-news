@@ -10,8 +10,8 @@ const CommentCard = ({ comment: { body, created_at, author, votes: currVotes, co
         const oppositeBtn = [...target.parentElement.children].find(field => field.nodeName === "BUTTON" && field !== target);
 
         const lockBtns = (bool) => [target, oppositeBtn].forEach((btn) => {
-            btn.classList[bool ? "add" : "remove"]("vote-disable");
-            btn.classList.remove("vote-error");
+            btn.classList[bool ? "add" : "remove"]("btn-lock");
+            btn.classList.remove("btn-error");
         });
 
         lockBtns(true);
@@ -21,16 +21,16 @@ const CommentCard = ({ comment: { body, created_at, author, votes: currVotes, co
             .then(({ data }) => {
                 setVotes((data.article ?? data.comment)["votes"]);
 
-                if (oppositeBtn.classList.contains("vote-success"))
-                    [target, oppositeBtn].forEach((btn) => btn.classList.remove("vote-success"));
+                if (oppositeBtn.classList.contains("btn-disabled"))
+                    [target, oppositeBtn].forEach((btn) => btn.classList.remove("btn-disabled"));
                 else
-                    target.classList.add("vote-success");
+                    target.classList.add("btn-disabled");
 
                 lockBtns(false);
             })
             .catch(() => {
                 lockBtns(false);
-                target.classList.add("vote-error");
+                target.classList.add("btn-error");
             });
     };
 

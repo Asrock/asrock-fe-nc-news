@@ -137,16 +137,16 @@ header {
     border-radius: 50%;
 }
 
-.vote-success {
+.btn-disabled {
     border: none;
     pointer-events: none;
     background-color: rgb(229, 229, 229);
 }
 
-.vote-error {
+.btn-error {
     border-color: red;
 }
 
-.vote-loading {
+.btn-lock {
     pointer-events: none;
 }
