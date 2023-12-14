@@ -12,6 +12,9 @@ const UsersPage = () => {
             .then(({ data }) => {
                 setUsers(data.users);
                 setApiStatus({ status: "completed" });
+            })
+            .catch(({ response, message }) => {
+                setApiStatus({ status: "error", message: response.data.message ?? message });
             });
     }, [])
     return ApiManager(apiStatus,

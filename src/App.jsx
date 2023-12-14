@@ -9,6 +9,7 @@ import UsersPage from './pages/UsersPage';
 import LoginPage from './pages/LoginPage';
 import LogoutPage from './pages/LogoutPage';
 import UserPage from './pages/UserPage';
+import ErrorPage from './pages/ErrorPage';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     <UserProvider>
       <Header />
       <Routes>
+      <Route path="*" element={<ErrorPage message="Page does not exist" />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/logout" element={<LogoutPage />} />

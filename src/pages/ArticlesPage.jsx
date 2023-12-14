@@ -17,6 +17,9 @@ export default function ArticlesPage() {
 				setPageManager({ ...pageManager, total: Math.ceil(data.total_count / 10) });
 				setArticles(data.articles);
 				setApiStatus({ status: "completed" });
+			})
+			.catch(({ response, message }) => {
+				setApiStatus({ status: "error", message: response.data.message ?? message });
 			});
 	}, [pageManager.current]);
 
