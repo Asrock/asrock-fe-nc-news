@@ -12,7 +12,10 @@ export default function ArticlesPage() {
 			.then(({ data }) => {
 				setPageManager({ ...pageManager, total: Math.ceil(data.total_count / 10) });
 				setArticles(data.articles);
-			});
+			})
+			// .catch(({ response, message }) => {
+			// 	setApiStatus({ status: "error", message: response.data.message ?? message });
+			// });
 	}, [pageManager.current]);
 
 	const pageHandler = (num) => () => setPageManager(p => ({ ...p, current: p.current + num }));
