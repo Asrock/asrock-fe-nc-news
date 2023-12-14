@@ -1,3 +1,9 @@
+#root {
+    max-width: 1280px;
+    padding: 2rem;
+    margin: auto;
+}
+
 .articles-list {
     display: flex;
     flex-flow: column nowrap;
@@ -12,6 +18,21 @@
     padding: 15px;
 }
 
+.comments-list {
+    display: flex;
+    flex-flow: column nowrap;
+    row-gap: 10px;
+}
+
+.comment-card {
+    display: flex;
+    flex-flow: column wrap;
+    background-color: whitesmoke;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
 .inline {
     display: flex;
     flex-flow: row wrap;
@@ -21,4 +42,78 @@
 
 .thumbnail {
     width: 100px;
+    height: 100px;
+    border-radius: 20px;
+}
+
+.user-list {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.user-card {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    background-color: whitesmoke;
+    border-radius: 20px;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.invalid-input {
+    border-color: rgba(255, 0, 0, 0.529);
+}
+
+.valid-input {
+    border-color: rgba(21, 255, 0, 0.529);
+}
+
+.valid-input:focus {
+    outline-color: rgba(21, 255, 0, 0.529);
+}
+
+.invalid-input:focus {
+    outline-color: rgba(255, 0, 0, 0.529);
+}
+
+.large {
+    width: 90vw;
+    max-height: 500px;
+    object-fit: scale-down;
+}
+
+.tag {
+    border: 1px gray solid;
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.center {
+    text-align: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-sub-menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-user-menu {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: end;
+}
+
+.icon {
+    padding: 1.5em;
+    width: 32px;
+    height: 32px;
 }
