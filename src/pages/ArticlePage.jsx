@@ -23,7 +23,7 @@ const ArticlePage = () => {
                 comments.sort((a, b) => b.created_at.localeCompare(a.created_at));
                 setComments(comments);
                 setApiStatus({ status: "completed" });
-            });            
+            });
     }, [])
 
     return ApiManager(apiStatus,
@@ -32,10 +32,12 @@ const ArticlePage = () => {
             <h5>{new Date(article.created_at).toLocaleDateString()}</h5>
             <img className="large" src={article.article_img_url} />
             <CommentCard comment={article} />
-            <Link className="tag" to={`/topics/${article.topic}/articles`}>{article.topic}</Link>            
+            <Link className="tag" to={`/topics/${article.topic}/articles`}>{article.topic}</Link>
             <h4>Comments</h4>
             <div className="comments-list">
-                {comments.map(comment => <CommentCard key={comment.comment_id} comment={comment} />)}
+                {comments.length
+                    ? comments.map(comment => <CommentCard key={comment.comment_id} comment={comment} />)
+                    : <p>Be the first to comment</p>}
             </div>
         </div>
     );
