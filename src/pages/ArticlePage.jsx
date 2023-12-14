@@ -23,7 +23,10 @@ const ArticlePage = () => {
                 comments.sort((a, b) => b.created_at.localeCompare(a.created_at));
                 setComments(comments);
                 setApiStatus({ status: "completed" });
-            });
+            })
+			.catch(({ response, message }) => {
+				setApiStatus({ status: "error", message: response.data.message ?? message });
+			});
     }, [])
 
     return ApiManager(apiStatus,
