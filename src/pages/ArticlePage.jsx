@@ -17,7 +17,7 @@ const ArticlePage = () => {
                 apiRequest("get", `articles/${article_id}`),
                 apiRequest("get", `articles/${article_id}/comments`)
             ])
-            .then(([{ data: { article } }, { data: { comments, total_count } }]) => {
+            .then(([{ data: { article } }, { data: { comments } }]) => {
                 setArticle(article);
                 //TODO - This might be done in the BE
                 comments.sort((a, b) => b.created_at.localeCompare(a.created_at));
